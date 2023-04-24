@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Recipe Recommender</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+        }
+
+        form {
+            margin-top: 30px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        input[type="text"] {
+            width: 70%;
+            height: 35px;
+            padding: 5px;
+            font-size: 1.2rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button[type="submit"] {
+            margin-top: 10px;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0062cc;
+        }
+
+        p.prediction {
+            margin-top: 30px;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        img {
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Recipe Recommender</h1>
+    <form method="POST">
+        <label for="nutrition_values">Enter nutrition values (separated by commas):</label>
+        <input type="text" name="nutrition_values" id="nutrition_values" required>
+        <button type="submit">Submit</button>
+    </form>
+    {% if prediction %}
+        <p class="prediction">Predicted recipe: {{ prediction }}</p>
+        <img src="{{ plot_url }}" alt="Recipe Ingredient Counts">
+    {% endif %}
+</body>
+</html>
